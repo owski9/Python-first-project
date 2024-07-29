@@ -1,0 +1,17 @@
+firstq = input("whats your name?")
+if firstq == " Owen" or firstq == " Owski":
+    print("Hello Owen")
+else:
+    print("nice")
+
+name = input("Enter the password: ")
+if name == "42":
+    print("correct, you have found out the secret")
+else:
+    print(name + " is wrong")
+
+secondq = input("How many E's in the last message? ")
+if secondq == "4":
+    print ("you are worthy")
+else:
+    print("you are a robot")
