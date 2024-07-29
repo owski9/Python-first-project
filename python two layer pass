@@ -1,0 +1,32 @@
+grades = [ 98, 90, 20]
+print(grades[0])
+print(grades[-1])
+for grade in grades:
+    if (grade>80):
+        print(grade)
+numbers = [1, 20, 3, 40]
+print("hi")
+guessed = False
+while not guessed:
+    guess = input("pass")
+    if guess == " 1234":
+        guessed = True
+        print("welcome")
+
+while guessed:
+    guess = input("secretpass2")
+    if guess == " secretpass":
+        guessed = True
+        print("HI :D")
+        break
+for number in numbers:
+    if number<90:
+        print(number)
+#learn how to print all numbers less than 90 in an array
+#import random
+#print(random.randint(1/8))
+   #if random>1:
+   #print("lucky")
+ #else:
+   #print("unlucky")
+
