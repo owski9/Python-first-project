@@ -1,0 +1,15 @@
+import random
+def greet(name):
+   greetings = ["Hi", "Hello"]
+   greeting = random.choice(greetings)
+   print(greeting + "" + name)
+
+
+
+
+greet(" User")
+
+
+def add(a, b):
+   return a+b
+print(add (2, 2))
