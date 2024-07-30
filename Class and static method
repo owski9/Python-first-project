@@ -1,0 +1,23 @@
+class Cat:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+        self.hat = True
+    def info(self):
+        print(f"{self.name} is a {self.breed} cat")
+
+    @staticmethod
+    def vocalize():
+        print("meow")
+    def write(self, text):
+        if not self.hat:
+            print(text)
+
+
+
+cat1 =Cat("Lexi", "Fluffy")
+print(cat1.name + " " + cat1.breed)
+Cat.vocalize()
+cat1.hat = False
+cat1.write("CAT!!")
+cat1.info()
