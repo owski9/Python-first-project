@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+x = [0, 1, 2, 3, 4]
+y = [0, 1, 8, 27, 64]
+plt.plot(x,y)
+plt.show()
+def square(x):
+   return x ** 2
+data=[]
+for x in range(0,100):
+   data.append(square(x))
+plt.plot(data)
+plt.show()
+
