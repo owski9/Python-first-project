@@ -1,0 +1,15 @@
+print("Guess the number 1-10...")
+import random
+number = random.randint(1, 5)
+guess = -1
+guessed = False
+while not guess == number:
+    guess = int(input(">"))
+    if guess>number:
+        print("too high!")
+    elif guess<number:
+        print("too low")
+    else:
+        guessed = True
+        print("congrats!!!")
+        break
