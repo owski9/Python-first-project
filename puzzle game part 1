@@ -1,0 +1,67 @@
+from openai import OpenAI
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+import requests
+class Board:
+    def __init__(self):
+        client = OpenAI(
+            api_key=""
+        )
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt="beautiful landscape with sunset",
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+        image_url = response.data[0].url
+        image = open("img.png", "wb")
+        webresponse = requests.get(image_url)
+        image.write(webresponse.content)
+        width, height = 1024,1024
+        rows, cols = 4, 4
+        piece_width = width // cols
+        piece_height = height // rows
+        image.close()
+        image = Image.open("img.png")
+        self.images = []
+        for i in range(rows):
+            for j in range(cols):
+                left = j * piece_width
+                upper = i * piece_height
+                right = left + piece_width
+                lower = upper + piece_height
+                piece = image.crop((left, upper, right, lower))
+                self.images.append(piece)
+        # load images into self.images
+        self.board = [ [ 0, 15, 2, 9],
+              [ 8, 5, 14, 12],
+              [ 4, 3, 11, 10],
+              [ 7, 13, 6, 1]]
+
+    def printboard(self):
+        canvas = Image.new(mode="RGB",size=(1024,1024))
+
+        for x in range(0, 4):
+            for y in range(0, 4):
+                img = self.images[self.board[y][x]]
+                offset_x = x * 256
+                offset_y = y * 256
+                # render image at position offsetx offsety using pygame
+                canvas.paste(img, (offset_x,offset_y))
+        return canvas
+
+    def swap(self, location1, location2):
+        location1 -= 1
+        location2 -= 1
+        piece1x = location1 % 4
+        piece1y = int(location1 / 4)
+        piece2x = location2 % 4
+        piece2y = int(location2 / 4)
+        # swap self.board[piece1y][piece1x] and self.board[piece2y][piece2x]
+        self.board[piece1y][piece1x] = 1
+        self.board[piece2y][piece2x] = 2
+
+        self.board[piece1y][piece1x], self.board[piece2y][piece2x] = self.board[piece2y][piece2x], self.board[piece1y][piece1x]
+
